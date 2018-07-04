@@ -1,7 +1,7 @@
 import numpy as np
+from rover_state import RoverState
 
-
-def forward_status(Rover):
+def forward_status(Rover: RoverState):
     # Check the extent of navigable terrain
     if len(Rover.nav_angles) >= Rover.stop_forward:
         # If mode is forward, navigable terrain looks good
@@ -25,7 +25,7 @@ def forward_status(Rover):
     return Rover
 
 
-def stop_status(Rover):
+def stop_status(Rover: RoverState):
     # If we're in stop mode but still moving keep braking
     if Rover.vel > 0.2:
         Rover.throttle = 0
@@ -58,7 +58,7 @@ def stop_status(Rover):
 
 # This is where you can build a decision tree for determining throttle, brake and steer
 # commands based on the output of the perception_step() function
-def decision_step(Rover):
+def decision_step(Rover: RoverState):
 
     # Implement conditionals to decide what to do given perception data
     # Here you're all set up with some basic functionality but you'll need to

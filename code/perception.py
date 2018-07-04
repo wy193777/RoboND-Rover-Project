@@ -100,7 +100,7 @@ def find_rocks(img, levels=(110, 110, 50)):
     return color_select
 
 
-def pixels_to_world_coors(img, rover):
+def pixels_to_world_coors(img, rover: RoverState):
     scale = 10
     world_size = rover.worldmap.shape[0]
     xpix, ypix = rover_coords(img)
@@ -111,7 +111,7 @@ def pixels_to_world_coors(img, rover):
 
 
 # Apply the above functions in succession and update the Rover state accordingly
-def perception_step(rover):
+def perception_step(rover: RoverState):
     # Perform perception steps to update Rover()
     # TODO:
     # NOTE: camera image is coming to you in Rover.img

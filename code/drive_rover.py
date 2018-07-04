@@ -120,14 +120,14 @@ def connect(sid, environ):
     sio.emit("get_samples", sample_data, skip_sid=True)
 
 
-def send_control(commands, image_string1, image_string2):
+def send_control(commands, map_image, bird_view_image):
     # Define commands to be sent to the rover
     data = {
         "throttle": commands[0].__str__(),
         "brake": commands[1].__str__(),
         "steering_angle": commands[2].__str__(),
-        "inset_image1": image_string1,
-        "inset_image2": image_string2,
+        "inset_image1": map_image,
+        "inset_image2": bird_view_image,
     }
     # Send commands via socketIO server
     sio.emit("data", data, skip_sid=True)

@@ -211,15 +211,15 @@ def create_output_images(Rover):
         1,
     )
     # Convert map and vision image to base64 strings for sending to server
-    pil_img = Image.fromarray(map_add.astype(np.uint8))
-    buff = BytesIO()
-    pil_img.save(buff, format="JPEG")
-    encoded_string1 = base64.b64encode(buff.getvalue()).decode("utf-8")
+    def encode_image(image):
+        pil_img = Image.fromarray(image.astype(np.uint8))
+        buff = BytesIO()
+        pil_img.save(buff, format="JPEG")
+        return base64.b64encode(buff.getvalue()).decode("utf-8")
 
-    pil_img = Image.fromarray(Rover.vision_image.astype(np.uint8))
-    buff = BytesIO()
-    pil_img.save(buff, format="JPEG")
-    encoded_string2 = base64.b64encode(buff.getvalue()).decode("utf-8")
+    encoded_string1, encoded_string2 = list(
+        map(encode_image, [map_add, Rover.vision_image])
+    )
 
     return encoded_string1, encoded_string2
 

@@ -55,8 +55,12 @@ See `./output/test_mapping.mp4`.
 
 #### `decision_step()`
 
-#### 2. Launching in autonomous mode your rover can navigate and map autonomously.  Explain your results and how you might improve them in your writeup.  
+The rover only need to consider between `foward` and `stop` status. When there is somewhere to go, the rover is on forward status. When there is no way to go, the rover will enter stop mode and braking. After the rover fulled stopped, it will turn on the same position until find some where to go.
 
-**Note: running the simulator with different choices of resolution and graphics quality may produce different results, particularly on different machines!  Make a note of your simulator settings (resolution and graphics quality set on launch) and frames per second (FPS output to terminal by `drive_rover.py`) in your writeup when you submit the project so your reviewer can reproduce your results.**
+#### Simulator Result
+
+The simulator is run on 1280 * 800 resolution and fantastic graph quality.
 
 The rover will stuck on a rock that part of the rock aren't on the gourd. In this condition, the rover think the rock is passable but actually been blocked by in the middle part of the rock.
+
+The robot walk on the map without any purpose. I tried to let it pick rocks but cannot success.
